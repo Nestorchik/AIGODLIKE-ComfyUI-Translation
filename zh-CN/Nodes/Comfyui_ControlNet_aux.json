@@ -39,9 +39,6 @@
         "inputs": {
             "image": "图像"
         },
-        "widgets": {
-            "threshold": "阈值"
-        },
         "outputs": {
             "IMAGE": "图像"
         }
