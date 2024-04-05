@@ -1,6 +1,6 @@
 {
-    "conditioning": "conditioning[example]",
-    "latent": "latent[example]",
-    "loaders": "loaders[example]",
-    "image": "image[example]"
+    "conditioning": "conditioning[условия]",
+    "latent": "latent[латент]",
+    "loaders": "loaders[загрузчик]",
+    "image": "image[изображение]"
 }

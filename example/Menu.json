@@ -1,8 +1,8 @@
 {
-    "Add Node": "Add Node[example]",
-    "Add Group": "Add Group[example]",
-    "Search": "Search[example]",
-    "Queue size:": "Queue size[example]:",
-    "Queue Prompt": "Queue Prompt[example]",
-    "Extra options": "Extra options[example]"
+    "Add Node": "Добавить ноду",
+    "Add Group": "Добавить группу",
+    "Search": "Поиск",
+    "Queue size:": "Размер очереди:",
+    "Queue Prompt": "Промпт в очередь",
+    "Extra options": "Еще опции"
 }
