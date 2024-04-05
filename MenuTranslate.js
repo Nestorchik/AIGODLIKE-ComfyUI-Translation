@@ -6,8 +6,8 @@ class TExe {
   }
 
   tSkip(node) {
-    // 是否需要跳过翻译?
-    // 判断node.classList 是否包含 excludeClass中的一个
+    // Вам нужен перевод?
+    // Определите, епсть ли в  node.classList нужный класс
     return this.excludeClass.some((cls) => node.classList?.contains(cls));
   }
 

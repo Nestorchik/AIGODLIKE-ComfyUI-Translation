@@ -2,7 +2,7 @@ import { app } from "../../scripts/app.js";
 import { $el } from "../../scripts/ui.js";
 import { LOCALES } from "./LocaleMap.js";
 import { applyMenuTranslation, observeFactory } from "./MenuTranslate.js";
-// Translation Utils
+// Утилита перевода
 export class TUtils {
   static LOCALE_ID = "AGL.Locale";
   static LOCALE_ID_LAST = "AGL.LocaleLast";
@@ -26,7 +26,7 @@ export class TUtils {
   static syncTranslation(OnFinished = () => {}) {
     var locale = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";
     if (localStorage.getItem(TUtils.LOCALE_ID) === null) {
-      // 有可能菜单设置了zh-CN但 loacalStorage为空, 这时不会刷新
+      // Возможно, в меню установлено значение ru-RU, но loacalStorage данные отсутствуют, поэтому оно переводиться не будет.
       let slocal = localStorage.getItem(`Comfy.Settings.${TUtils.LOCALE_ID}`);
       if (slocal) {
         locale = slocal.replace(/^"(.*)"$/, "$1");
@@ -37,7 +37,7 @@ export class TUtils {
     request.open("post", url, false);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onload = function () {
-      /* XHR对象获取到返回信息后执行 */
+      /* Объект XHR получает ответ и выполняется */
       if (request.status != 200) return;
       var resp = JSON.parse(request.responseText);
       for (var key in TUtils.T) {
@@ -45,9 +45,9 @@ export class TUtils {
         else TUtils.T[key] = {};
       }
       TUtils.T.Locales = LOCALES;
-      // 合并NodeCategory 到 Menu
+      // Объединить NodeCategory в меню
       TUtils.Menu = Object.assign(TUtils.T.Menu, TUtils.T.NodeCategory);
-      // 提取 Node 中 key 到 Menu
+      // Извлечение ключа из узла в меню
       for (let key in TUtils.T.Nodes) {
         let node = TUtils.T.Nodes[key];
         TUtils.Menu[key] = node["title"] || key;
@@ -125,7 +125,7 @@ export class TUtils {
       node.title = t["title"];
       node.constructor.title = t["title"];
     }
-    // 转换 widget 到 input 时需要刷新socket信息
+    // Обновление информации о сокете при преобразовании виджетов в input
     let addInput = node.addInput;
     node.addInput = function (name, type, extra_info) {
       var oldInputs = [];
@@ -152,9 +152,9 @@ export class TUtils {
   }
 
   static applyMenuTranslation(app) {
-    // 搜索菜单 常驻菜单
+    // Меню поиска
     applyMenuTranslation(TUtils.T);
-    // Queue size 单独处理
+    // Размер очереди
     observeFactory(app.ui.menuContainer.querySelector(".drag-handle").childNodes[1], (mutationsList, observer) => {
       for (let mutation of mutationsList) {
         for (let node of mutation.addedNodes) {
@@ -169,7 +169,7 @@ export class TUtils {
   }
 
   static applyContextMenuTranslation(app) {
-    // 右键上下文菜单
+    // Меню правой кнопки мыши
     var f = LGraphCanvas.prototype.getCanvasMenuOptions;
     LGraphCanvas.prototype.getCanvasMenuOptions = function () {
       var res = f.apply(this, arguments);
@@ -187,8 +187,8 @@ export class TUtils {
       if (options.hasOwnProperty("title") && options.title in TUtils.T.Nodes) {
         options.title = TUtils.T.Nodes[options.title]["title"] || options.title;
       }
-      // Convert {w.name} to input
-      // Convert {w.name} to widget
+      // Конвертировать {w.name} в input
+      // Конвертировать {w.name} в widget
       var t = TUtils.T.Menu;
       var reInput = /Convert (.*) to input/;
       var reWidget = /Convert (.*) to widget/;
@@ -197,12 +197,12 @@ export class TUtils {
       var twgt = t[" to widget"] || " to widget";
       for (let value of values) {
         if (value == null || !value.hasOwnProperty("content")) continue;
-        // inputs
+        // входа (inputs)
         if (value.content in t) {
           value.content = t[value.content];
           continue;
         }
-        // widgets and inputs
+        // виджеты и inputs
         var matchInput = value.content?.match(reInput);
         if (matchInput) {
           var match = matchInput[1];
@@ -338,7 +338,7 @@ export class TUtils {
 const ext = {
   name: "AIGODLIKE.Translation",
   async init(app) {
-    // Any initial setup to run as soon as the page loads
+    // Любая начальная настройка (сразу после загрузки страницы)
     TUtils.enhandeDrawNodeWidgets();
     TUtils.syncTranslation();
     return;
@@ -371,7 +371,7 @@ const ext = {
           for (let iname in o.inputs) {
             for (let name in t_inputs) {
               if (iname == name)
-                // 没有翻译的不管
+                // если нет перевода
                 continue;
               if (iname == t_inputs[name]) {
                 o.inputs[name] = o.inputs[iname];
@@ -393,9 +393,9 @@ const ext = {
     TUtils.applyMenuTranslation(app);
     TUtils.addRegisterNodeDefCB(app);
     TUtils.addSettingsMenuOptions(app);
-    // 构造设置面板
+    // Панель Settings
     // this.settings = new AGLSettingsDialog();
-    // 添加按钮
+    // Добавить кнопку
     app.ui.menuContainer.appendChild(
       $el("button.agl-swlocale-btn", {
         id: "swlocale-button",
@@ -412,37 +412,37 @@ const ext = {
     );
   },
   async addCustomNodeDefs(defs, app) {
-    // Add custom node definitions
-    // These definitions will be configured and registered automatically
-    // defs is a lookup core nodes, add yours into this
-    // console.log("[logging]", "add custom node definitions", "current nodes:", Object.keys(defs));
+     // Добавляем пользовательские определения узлов
+     // Будут настроены и зарегистрированы автоматически
+     // defs — это поиск основных узлов, добавьте сюда свои
+     // console.log("[logging]", "добавить пользовательские определения узлов", "текущие узлы:", Object.keys(defs));
   },
   async getCustomWidgets(app) {
-    // Return custom widget types
-    // See ComfyWidgets for widget examples
-    // console.log("[logging]", "provide custom widgets");
+     // Возвращаем пользовательские типы виджетов
+     // См. ComfyWidgets для примеров виджетов
+     // console.log("обеспечиваем пользовательские виджеты");
   },
   async beforeRegisterNodeDef(nodeType, nodeData, app) {
-    // Run custom logic before a node definition is registered with the graph
-    // console.log("[logging]", "before register node: ", nodeType.comfyClass);
-    // This fires for every node definition so only log once
+    // Запускаем пользовательскую логику до того, как определение узла будет зарегистрировано в графе
+    // console.log("[logging]", "перед регистром узла: ", nodeType.comfyClass);
+    // Это срабатывает для каждого определения узла, поэтому регистрируйтесь только один раз
     // applyNodeTranslationDef(nodeType, nodeData);
     // delete ext.beforeRegisterNodeDef;
   },
   async registerCustomNodes(app) {
-    // Register any custom node implementations here allowing for more flexability than a custom node def
+    // Зарегистрируйте здесь любые реализации пользовательских узлов, обеспечивая большую гибкость, чем определение пользовательского узла
     // console.log("[logging]", "register custom nodes");
   },
   loadedGraphNode(node, app) {
-    // Fires for each node when loading/dragging/etc a workflow json or png
-    // If you break something in the backend and want to patch workflows in the frontend
-    // This fires for every node on each load so only log once
-    // delete ext.loadedGraphNode;
+     // Срабатывает для каждого узла при загрузке/перетаскивании/и т. д. воркфлоу в формате json или png
+     // Если вы что-то сломали в бэкэнде и хотите исправить рабочие процессы во фронтенде
+     // Это срабатывает для каждого узла при каждой загрузке, поэтому регистрируйтесь только один раз
+     // delete ext.loadedGraphNode;
     TUtils.applyNodeTranslation(node);
   },
   nodeCreated(node, app) {
-    // Fires every time a node is constructed
-    // You can modify widgets/add handlers/etc here
+     // Срабатывает каждый раз, когда создается узел
+     // Здесь вы можете изменять виджеты/добавлять обработчики/и т. д.
     TUtils.applyNodeTranslation(node);
   },
 };
