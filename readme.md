@@ -4,7 +4,7 @@
 
 > 俄罗斯本地化分叉项目“ComfyUI” （初始化阶段）
 
-Проект представляет из себя форк-версию оригинального "AIGODLIKE-ComfyUI-Translation", и вычленяет из него только русский язык. При GIT-установке не переписывает файлы кастом-ноды "AIGODLIKE", а ставит их как отдельную кастом-ноду в папку "NStor-ComfyUI-Translation". После обновления там, файлы следует вручную перенести (скопировать) в папку ["AIGODLIKE-ComfyUI-Translation"](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation), структура папок идентична.
+Проект представляет из себя форк "AIGODLIKE-ComfyUI-Translation", и вычленяет из него только русский язык. При GIT-установке не переписывает файлы кастом-ноды "AIGODLIKE", а ставит их как отдельную кастом-ноду в папку "NStor-ComfyUI-Translation". После обновления там, файлы следует вручную перенести (скопировать) в папку ["AIGODLIKE-ComfyUI-Translation"](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation), структура папок идентична.
 
 # Пока проект запускается - все будет так. #
 # Как разовьется, буду сюда добавлять "движок" сюда. #
