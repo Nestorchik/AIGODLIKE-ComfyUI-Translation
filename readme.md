@@ -1,4 +1,4 @@
-**Прект русской локализации "ComfyUI"** (в стадии инициализации)
+Прект русской локализации "ComfyUI" (в стадии инициализации)
 
 > Russian localization fork project "ComfyUI" (in the initialization stage)
 
