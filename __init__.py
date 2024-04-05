@@ -18,8 +18,8 @@ from pathlib import Path
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 
-VERSION = "0.0.1"
-ADDON_NAME = "AIGODLIKE-COMFYUI-TRANSLATION"
+VERSION = "0.0.2"
+ADDON_NAME = "NSTOR-COMFYUI-TRANSLATION"
 COMFY_PATH = Path(folder_paths.__file__).parent
 CUR_PATH = Path(__file__).parent
 
@@ -72,7 +72,7 @@ def compile_translation(locale):
     nodes_translation = get_nodes_translation(locale)
     # NodeCategory
     node_category_translation = get_category_translation(locale)
-    # Menus
+    # Меню
     menu_translation = get_menu_translation(locale)
     # compile
     json_data = json.dumps(obj={"Nodes": nodes_translation,
@@ -132,7 +132,7 @@ def rmtree(path: Path):
         for child in path.iterdir():
             rmtree(child)
         try:
-            path.rmdir()  # nas 的共享盘可能会有残留
+            path.rmdir()
         except BaseException:
             ...
 
@@ -143,24 +143,27 @@ def register():
     if hasattr(nodes, "EXTENSION_WEB_DIRS"):
         rmtree(aigodlike_ext_path)
         return
-    # 新版已经不需要复制文件了
+    # Новая версия больше не требует копирования файлов.
     try:
         if os.name == "nt":
             try:
                 import _winapi
-                _winapi.CreateJunction(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix())
+                _winapi.CreateJunction(
+                    CUR_PATH.as_posix(), aigodlike_ext_path.as_posix())
             except WindowsError as e:
-                shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(), ignore=shutil.ignore_patterns(".git"))
+                shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(
+                ), ignore=shutil.ignore_patterns(".git"))
         else:
-            # 复制时过滤 .git
-            shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(), ignore=shutil.ignore_patterns(".git"))
+            # Фильтровать при копировании .git
+            shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(
+            ), ignore=shutil.ignore_patterns(".git"))
     except Exception as e:
         sys.stderr.write(f"[agl/register error]: {e}\n")
         sys.stderr.flush()
 
 
 def unregister():
-    # 移除缓存json
+    # Удалить кэшированный json
     # for data in CUR_PATH.glob("*.json"):
     #     if not data.name.startswith("translations_"):
     #         continue
