@@ -25,7 +25,7 @@ CUR_PATH = Path(__file__).parent
 
 
 def try_get_json(path: Path):
-    for coding in {"utf-8", "gbk"}:
+    for coding in {"utf-8"}:
         try:
             return json.loads(path.read_text(encoding=coding))
         except Exception:
