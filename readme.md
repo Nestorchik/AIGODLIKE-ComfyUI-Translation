@@ -29,19 +29,19 @@
 Модуль начинает работу сразу после перезагрузки питона.
 
 ---
-<p align="center">
+
 Для "нормальной работы с локализованной версией "ComfyUI" требуется установленный "ComfyUI-Manager". В его меню (шестеренка) - пункт **"AGLTranslation-langualge"** выбрать язык **"Русский"**.
 
+<p align="center">
   <img src="img/1.jpg">
 </br>
   <img src="img/2.jpg">
 </p>
 
 ---
-
+<p align="center">
 Переключение языка "Русский/Английский" кнопкой менеджера "Switch Locale/Смена языка".
 
-<p align="center">
   <img src="img/4.jpg">
 </p>
 
