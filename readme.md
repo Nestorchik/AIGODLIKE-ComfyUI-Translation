@@ -11,6 +11,7 @@
 Локализатор устанавливается как обычная нода через "ComfyUI-Manager" - **"Install via Git URL"** и ввода адреса:
 
 - **https://github.com/Nestorchik/NStor-ComfyUI-Translation.git**
+
 <p align="center">
   <img src="img/3.jpg">
 </p>
