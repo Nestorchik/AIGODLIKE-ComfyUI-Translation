@@ -96,7 +96,7 @@
 Далее - неменого скриншотов переведенного интерфейса:
 
 <p align="center">
-  <img src="img/01.jpg">
+  <img width="50%" src="img/01.jpg">
 </br>
   <img src="img/02.jpg">
 </br>
