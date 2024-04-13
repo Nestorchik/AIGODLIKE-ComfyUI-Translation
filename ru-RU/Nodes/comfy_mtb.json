@@ -601,7 +601,7 @@
     "Add To Playlist (mtb)": {
         "title": "Добавить в плей-лист (mtb)",
         "inputs": {
-            "video_1": "video_1"
+            "video_1": "видео_1"
         },
         "widgets": {
             "relative_paths": "относительный путь",
