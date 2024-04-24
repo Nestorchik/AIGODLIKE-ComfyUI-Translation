@@ -2480,7 +2480,7 @@
     "min": "минимум",
     "Choose a platform to share your workflow": "Показать",
     "mtb": "mtb",
-    "[⚡mtb] Enable Debug (py and js)": "[⚡MTB] Разрешить отдалку (py и js)",
+    "[⚡mtb] Enable Debug (py and js)": "[⚡MTB] Разрешить отладку (py и js)",
     "[⚡mtb] Enable image feed": "[⚡MTB] Разрешить полосу превью",
     "Color to Normals": "Цвета в нормаль",
     "Normals to Curvature": "Нормаль к кривой",
