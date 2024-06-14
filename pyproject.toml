@@ -1,0 +1,14 @@
+[project]
+name = "nstor-comfyui-translation"
+description = "Russian localization of ComfyUI, ComafyUI-Manager & more..."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/Nestorchik/NStor-ComfyUI-Translation"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "NStor-ComfyUI-Translation"
+Icon = ""
